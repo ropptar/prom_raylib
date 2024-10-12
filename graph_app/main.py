@@ -20,6 +20,10 @@ class Emoji:
         self.is_hollow = is_hollow
         self.col = col
         self.measure = pr.measure_text(face, font_size)
+        self.rect=pr.Rectangle(self.pos.x-r,
+                              self.pos.y-r,
+                              self.pos.x+r,
+                              self.pos.y+r)
 
     # move
     def move_xy(self, x_inc=1, y_inc=1):
@@ -34,8 +38,7 @@ class Emoji:
 
     # draw
     def check_wall(self):
-        if pr.get_collision_rec()
-        return not pr.check_collision_circle_rec(self.pos, self.r, WINDOW_REC)
+        return pr.get_collision_rec(self.rect,WINDOW_REC)!=self.rect
 
     def update(self):
         if self.is_hollow:
