@@ -1,5 +1,6 @@
 import math
 
+import pyray
 import pyray as pr
 
 WINDOW_WIDTH = 1920
@@ -31,14 +32,16 @@ class Emoji:
         self.pos.y += y_inc
 
     def move(self, inc):
-        if self.check_wall():
+        if not self.check_wall():
             self.inverse_angle()
         self.pos.x += inc * math.cos(self.angle)
         self.pos.y -= inc * math.sin(self.angle)
 
     # draw
     def check_wall(self):
-        return pr.get_collision_rec(self.rect,WINDOW_REC)!=self.rect
+        rec=pr.get_collision_rec(self.rect,WINDOW_REC)
+        return rec!=self.
+
 
     def update(self):
         if self.is_hollow:
